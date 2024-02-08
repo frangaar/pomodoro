@@ -1,0 +1,49 @@
+.tablero{
+    /* margin-top: 30px; */
+}
+
+.tablero .col{
+    position: relative;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+.tasksList{
+    height: 800px;
+    margin-top: 25px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.addTask{
+    position: absolute;
+    bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.simbolo{
+    background-image: url(../img/mas_menos.png);
+    background-size: cover;
+    width: 25px;
+    display: inline-block;
+    height: 25px;
+    float: left;
+}
+
+.texto{
+    padding-left: 5px;
+}
+
+.taskContainer{
+    border: 1px solid;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+img[id^='task']{
+    padding: 15px;
+}
