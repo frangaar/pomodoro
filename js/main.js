@@ -26,16 +26,17 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function createTask(){
 
-        let totalTasks = document.querySelectorAll('.tasksList > img').length;
+        let totalTasks = document.querySelectorAll('.tasksList > div').length;
 
         let taskContainer = document.createElement('div');
         taskContainer.setAttribute('class','taskContainer');
+        taskContainer.setAttribute('id',`task${totalTasks}`);
+        taskContainer.setAttribute('draggable','true');
+        taskContainer.setAttribute('ondragstart','drag(event)');
 
         let singleTask = document.createElement('img');     
-        singleTask.setAttribute('id',`task${totalTasks}`);
         singleTask.setAttribute('src','img/img.png');
-        singleTask.setAttribute('draggable','true');
-        singleTask.setAttribute('ondragstart','drag(event)');
+        
 
         taskContainer.appendChild(singleTask);
 
@@ -49,7 +50,7 @@ function allowDrop(ev) {
   }
   
   function drag(ev) {
-    ev.dataTransfer.setData("task", ev.target.id);
+    ev.dataTransfer.setData("task", ev.target.parentElement.id);
   }
   
   function drop(ev) {

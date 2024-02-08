@@ -10,33 +10,36 @@
     <title>Pomodoro</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row align-items-start tablero">
-          <div class="col border" id="pendiente" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <span class="title">Pendents</span>
-            <div class="tasksList border"></div>
-            <div class="addTask border">
-                <span class="simbolo"></span>
-                <span class="texto">Add new task</span>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row align-items-start tablero">
+              <div class="col border" id="pendiente" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <span class="title">Pendents</span>
+                <div class="tasksList border"></div>
+                <div class="addTask border">
+                    <span class="simbolo"></span>
+                    <span class="texto">Add new task</span>
+                </div>
+              </div>
+              <div class="col border" id="curso" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <span class="title">En curs</span>
+                <div class="tasksList border"></div>
+                <div class="addTask border">
+                    <span class="simbolo"></span>
+                    <span class="texto">Add new task</span>
+                </div>
+              </div>
+              <div class="col border" id="completado" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <span class="title">Completades</span>
+                <div class="tasksList border"></div>
+                <div class="addTask border">
+                    <span class="simbolo"></span>
+                    <span class="texto">Add new task</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col border" id="curso" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <span class="title">En curs</span>
-            <div class="tasksList border"></div>
-            <div class="addTask border">
-                <span class="simbolo"></span>
-                <span class="texto">Add new task</span>
-            </div>
-          </div>
-          <div class="col border" id="completado" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <span class="title">Completades</span>
-            <div class="tasksList border"></div>
-            <div class="addTask border">
-                <span class="simbolo"></span>
-                <span class="texto">Add new task</span>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+    
 </body>
 </html>
