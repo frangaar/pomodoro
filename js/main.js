@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let cols = document.querySelectorAll('.tablero .col');
     let colsTasks = document.querySelectorAll('.tablero .col .tasksList');
+    let categories = document.querySelectorAll('.category .badge');
     
     let taskData = new Array();
+    let categColor = '';
 
     // let columnsHeight = document.querySelectorAll('.tablero .col')[0];
 
@@ -15,10 +17,15 @@ document.addEventListener('DOMContentLoaded',function(){
         item.style.height = (window.innerHeight - 120) + 'px';
     });
 
-    let pendientes = document.getElementById('save');
-    // let curso = document.getElementById('curso');
-    // let completados = document.getElementById('completado');
+    categories.forEach((item)=>{
+        item.addEventListener('click',function(){
+            taskData['cat'] = this.getAttribute('data-name');
+            categColor = this.getAttribute('data-color');
+        });
+        
+    });
 
+    let pendientes = document.getElementById('save');
     let eventos = [pendientes];
 
     eventos.forEach((boton) =>{
@@ -33,12 +40,6 @@ document.addEventListener('DOMContentLoaded',function(){
         });
     });
 
-    let saveTask = document.getElementById('save');
-
-    saveTask.addEventListener('click',function(){
-
-        
-    });
 
     function getFormData(){
         let title = document.getElementById('title').value;
@@ -46,21 +47,16 @@ document.addEventListener('DOMContentLoaded',function(){
         
         taskData['title'] = title;
         taskData['desc'] = description;
-        // taskData['category'] = cat;
     }
 
     function createTask(){
 
         let totalTasks = document.querySelectorAll('.tasksList > div').length;
 
-        // let taskContainer = document.createElement('div');
-        // taskContainer.setAttribute('class','taskContainer');
-        // taskContainer.setAttribute('id',`task${totalTasks}`);
-        // taskContainer.setAttribute('draggable','true');
-        // taskContainer.setAttribute('ondragstart','drag(event)');
-
         let singleTask = document.createElement('div');
-        singleTask.setAttribute('class','card mb-3');
+        
+        (categColor != '') ? singleTask.setAttribute('class',`card mb-3 ${categColor}`) : singleTask.setAttribute('class','card mb-3 text-bg-secondary')
+        
         singleTask.setAttribute('id',`task${totalTasks}`);
         singleTask.setAttribute('draggable','true');
         singleTask.setAttribute('ondragstart','drag(event)');
@@ -73,16 +69,24 @@ document.addEventListener('DOMContentLoaded',function(){
         let desc = document.createElement('p');
         desc.setAttribute('class','card-text')
         desc.innerText = 'Description: ' + taskData['desc'];
+        
+        let created = document.createElement('p');
+        created.setAttribute('class','card-text');
+
+        let currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString('es-ES', {
+            day: '2-digit',
+            month: 'numeric',
+            year: 'numeric',
+          });
+        created.innerText = 'Creation date: ' + formattedDate;
+
 
         body.appendChild(title);
         body.appendChild(desc);
+        body.appendChild(created);
         singleTask.appendChild(body);
 
-        // let singleTask = document.createElement('img');     
-        // singleTask.setAttribute('src','img/img.png');
-        
-
-        // taskContainer.appendChild(singleTask);
 
         return singleTask;
     }

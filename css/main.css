@@ -57,4 +57,9 @@ div[id^='task']{
 .category .badge{
     width: 100px;
     height: 50px;
+    cursor: pointer;
+}
+
+.card{
+    cursor: pointer;
 }
