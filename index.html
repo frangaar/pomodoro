@@ -1,42 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="--ratio: 0.99">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/main.css" rel="stylesheet">
     <script src="js/main.js"></script>
     <title>Pomodoro</title>
 </head>
 <body>
+
+    <svg height="400" width="400" style="overflow: visible; position: relative">
+        <circle cx="200" cy="200" r="200" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute;"></circle>
+        <circle cx="200" cy="200" r="200" fill="transparent" stroke="blue" stroke-width="4px" style="position: absolute; stroke-dasharray: calc(2*3.14*200); stroke-dashoffset: calc(-2*3.14*200*var(--ratio)); transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+    </svg>
+
     <div class="container-fluid">
         <div class="container">
-            <div class="row align-items-start tablero">
-              <div class="col border" id="pendiente" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <span class="title">Pendents</span>
-                <div class="tasksList border"></div>
-                  <button type="button" class="btn btn-primary addTask" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-                    <span class="simbolo"></span>
-                    <span class="texto">Add new task</span>
-                  </button>
-              </div>
-              <div class="col border" id="curso" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <span class="title">En curs</span>
-                <div class="tasksList border"></div>
-                <!-- <div class="addTask border">
-                    <span class="simbolo"></span>
-                    <span class="texto">Add new task</span>
-                </div> -->
-              </div>
-              <div class="col border" id="completado" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <span class="title">Completades</span>
-                <div class="tasksList border"></div>
-                <!-- <div class="addTask border">
-                    <span class="simbolo"></span>
-                    <span class="texto">Add new task</span>
-                </div> -->
-              </div>
+            <div class="row align-items-start">
+                <div class="col-3">
+                    <div class="container-fluid">
+                        <div class="container">
+                            <div class="row pomodoro">
+                                <div class="col border" id="normalTimer" data-time="25">
+                                    <span class="title">Temporizador</span>
+                                    <div class="timer">
+                                        <span class="align-middle"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row pomodoro">
+                                <div class="col border"  id="shortTimer" data-time="05">
+                                    <span class="title">Descanso corto</span>
+                                    <div class="timer">
+                                        <span class="align-middle"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row pomodoro">
+                                <div class="col border" id="longTimer" data-time="15">
+                                    <span class="title">Descanso largo</span>
+                                    <div class="timer">
+                                        <span class="align-middle"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="container-fluid">
+                        <div class="container">
+                            <div class="row align-items-start tablero">
+                            <div class="col border" id="pendiente" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <span class="title">Pendents</span>
+                                <div class="tasksList border"></div>
+                                <button type="button" class="btn btn-primary addTask" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                                    <span class="simbolo"></span>
+                                    <span class="texto">Add new task</span>
+                                </button>
+                            </div>
+                            <div class="col border" id="curso" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <span class="title">En curs</span>
+                                <div class="tasksList border"></div>
+                            </div>
+                            <div class="col border" id="completado" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <span class="title">Completades</span>
+                                <div class="tasksList border"></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -62,20 +103,27 @@
               <div class="mb-3 category">
                 <label for="message-text" class="col-form-label w-100">Category:</label>
                 <span class="badge text-bg-primary" data-color="text-bg-primary" data-name="Front-End">Front-End</span>
-                <span class="badge text-bg-danger" data-color="text-bg-danger" data-name="Back-End">Back-End</span>
+                <span class="badge text-bg-success" data-color="text-bg-success" data-name="Back-End">Back-End</span>
                 <span class="badge text-bg-warning" data-color="text-bg-warning" data-name="Design">Design</span>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" id="save">Save</button>
+            <button type="submit" class="btn btn-primary" id="save" data-bs-dismiss="modal">Save</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
-    
-    
+
+    <div id="myModal" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <p>¡Tiempo Finalizado!</p>
+          <p>El tiempo ha finalizado.</p>
+        </div>
+      </div>
 
 </body>
 </html>
