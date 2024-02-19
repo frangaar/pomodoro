@@ -12,10 +12,15 @@
 </head>
 <body>
 
-    <svg height="400" width="400" style="overflow: visible; position: relative">
+    <!-- <svg class="round" height="400" width="400" style="overflow: visible; position: relative" data-percent="89">
         <circle cx="200" cy="200" r="200" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute;"></circle>
         <circle cx="200" cy="200" r="200" fill="transparent" stroke="blue" stroke-width="4px" style="position: absolute; stroke-dasharray: calc(2*3.14*200); stroke-dashoffset: calc(-2*3.14*200*var(--ratio)); transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
-    </svg>
+    </svg> -->
+
+        <!-- <svg width="400" height="400" style="overflow: visible; position: relative">
+            <circle cx="200" cy="200" r="100" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+            <circle class="round" cx="200" cy="200" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+        </svg> -->
 
     <div class="container-fluid">
         <div class="container">
@@ -24,7 +29,7 @@
                     <div class="container-fluid">
                         <div class="container">
                             <div class="row pomodoro">
-                                <div class="col border" id="normalTimer" data-time="25">
+                                <div class="col border" id="normalTimer" data-time="1">
                                     <span class="title">Temporizador</span>
                                     <div class="timer">
                                         <span class="align-middle"></span>
@@ -61,7 +66,7 @@
                             <div class="col border" id="pendiente" ondrop="drop(event)" ondragover="allowDrop(event)">
                                 <span class="title">Pendents</span>
                                 <div class="tasksList border"></div>
-                                <button type="button" class="btn btn-primary addTask" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                                <button type="button" class="btn btn-primary addTask" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <span class="simbolo"></span>
                                     <span class="texto">Add new task</span>
                                 </button>
@@ -116,14 +121,10 @@
       </div>
     </div>
 
-    <div id="myModal" class="modal">
-        <!-- Contenido del modal -->
-        <div class="modal-content">
+    <div id="myModal">
           <span class="close" onclick="closeModal()">&times;</span>
-          <p>¡Tiempo Finalizado!</p>
-          <p>El tiempo ha finalizado.</p>
-        </div>
-      </div>
+          <h1>¡Tiempo Finalizado!</h1>
+    </div>
 
 </body>
 </html>

@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded',function(){
 
+    // let round = document.querySelector('.round'),
+    //   roundRadius = document.querySelector('circle').getAttribute('r'),
+    //   roundPercent = document.querySelector('svg').getAttribute('data-percent'),
+    //   roundCircum = 2 * roundRadius * Math.PI,
+    //   roundDraw = roundPercent * roundCircum / 100
+    // round.style.strokeDasharray = roundDraw  + ' 999';
+
+
     let cols = document.querySelectorAll('.tablero .col');
     let colsTasks = document.querySelectorAll('.tablero .col .tasksList');
     let categories = document.querySelectorAll('.category .badge');
@@ -34,6 +42,18 @@ document.addEventListener('DOMContentLoaded',function(){
     function startTime(ev,item){
 
         if(!item.classList.contains('running')){
+
+        // let svg = document.createElement('svg');        
+
+        // let svgContent = `<circle cx="75" cy="75" r="100" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+        //                 <circle class="round" cx="75" cy="75" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>`;
+
+        // svg.innerHTML = svgContent;
+
+        // let divTime = item.querySelector('.timer')
+        
+        // divTime.appendChild(svg);
+
             item.classList.add('running');
             let min = ev.currentTarget.getAttribute('data-time');
             let sec = '00';
@@ -65,7 +85,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 taskRoundFinished = false;
                 shortRestingTimeCounter = 0;
             }
-            // alert(timer.getAttribute('id') + ' completado')
+            
             document.getElementById("myModal").style.display = "block";
         }else{
             if(sec >= 0){
@@ -87,6 +107,17 @@ document.addEventListener('DOMContentLoaded',function(){
         }
      
         timer.querySelector('.timer span').innerText = min + ':' + sec;
+
+        // let tiempoRestante = 60 - ((min * 60) + sec);
+
+        // let round = document.querySelector('.round'),
+        // roundRadius = document.querySelector('circle').getAttribute('r'),
+        // roundCircum = 2 * roundRadius * Math.PI,
+        // roundPercent = (tiempoRestante/60) * 100;
+        // roundDraw = roundPercent * roundCircum / 100
+        // round.style.strokeDasharray = roundDraw  + ' 999';
+
+        
     }
 
     cols.forEach((item)=>{

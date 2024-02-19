@@ -97,6 +97,7 @@ div[id^='task'] i{
     text-align: center;
     background-color: white;
     border-radius: 15px;
+    padding-top: 10px;
 }
 
 .pomodoro .timer{
@@ -130,13 +131,13 @@ div[id^='task'] i{
   }
   
   
-  .modal-content {
+  #myModal .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
+    width: 500px;
+    height: 180px;
     text-align: center;
   }
   
@@ -154,4 +155,21 @@ div[id^='task'] i{
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .round {
+    transform: rotate(-90deg);
+    transition: all 1s ease-in-out;
+    fill: none;
+    stroke: red;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 0 999;
+  }
+
+  svg{
+    overflow: visible;
+    position: relative;
+    width: 200;
+    height: 200;
   }
