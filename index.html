@@ -29,7 +29,7 @@
                     <div class="container-fluid">
                         <div class="container">
                             <div class="row pomodoro">
-                                <div class="col border" id="normalTimer" data-time="1">
+                                <div class="col border" id="normalTimer" data-time="00">
                                     <span class="title">Temporizador</span>
                                     <div class="timer">
                                         <span class="align-middle"></span>
@@ -121,10 +121,13 @@
       </div>
     </div>
 
-    <div id="myModal">
+    <div id="myModal" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
           <h1>¡Tiempo Finalizado!</h1>
-    </div>
+        </div>
+      </div>
 
 </body>
 </html>
