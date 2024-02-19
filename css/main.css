@@ -88,26 +88,29 @@ div[id^='task'] i{
     opacity: 0.5;
 }
 
-
 .pomodoro .col{
     text-align: center;
     background-color: white;
     border-radius: 15px;
     padding-top: 10px;
+    
 }
 
 .pomodoro .timer{
     padding-top: 10px;
-    width: 260px;
+    width: 210px;
+    height: 230px;
     margin: auto;
     cursor: pointer;
+    /* background-image: url(../img/pomodoro.png);
+    background-size: 212px; */
 }
 
 .pomodoro .timer span{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 260px;
+    height: 222px;
     border: 1px solid transparent;
     border-radius: 50%;
     font-size: 50px;
@@ -165,7 +168,7 @@ div[id^='task'] i{
     cursor: pointer;
   }
 
-  .round {
+  /* .round {
     transform: rotate(-90deg);
     transition: all 1s ease-in-out;
     fill: none;
@@ -180,4 +183,17 @@ div[id^='task'] i{
     position: relative;
     width: 200;
     height: 200;
+  } */
+
+  .fa-gear{
+    position: absolute;
+    font-size: 35px;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+
+  }
+
+  .fa-trash{
+    color: #ff1414;
   }

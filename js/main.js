@@ -17,27 +17,35 @@ document.addEventListener('DOMContentLoaded',function(){
     var shortRestingTimeCounter = 0;
     let taskData = new Array();
     let categColor = '';
+    
+    getInitialTimers(pomodoroTimers);
 
+    function getInitialTimers(pomodoroTimers){
 
-    pomodoroTimers.forEach((item)=>{
-        item.style.height = (window.innerHeight/pomodoroTimers.length) + 'px';
-        item.addEventListener('click', function(ev){
-
-            if(ev.currentTarget.id == 'longTimer'){
-                if(shortRestingTimeCounter == 4){
-                    startTime(ev,item);
-                }                
-            }else if(ev.currentTarget.id == 'shortTimer'){
-                if(taskRoundFinished){
-                    startTime(ev,item);
-                }                
-            }else{
-                if(!taskRoundFinished){
-                    startTime(ev,item);
+        pomodoroTimers.forEach((item)=>{
+            item.style.height = (window.innerHeight/pomodoroTimers.length) + 'px';
+    
+            item.querySelector('.timer span').innerHTML = item.getAttribute('data-time') + ':' + '00';
+    
+            item.addEventListener('click', function(ev){
+    
+                if(ev.currentTarget.id == 'longTimer'){
+                    if(shortRestingTimeCounter == 4){
+                        startTime(ev,item);
+                    }                
+                }else if(ev.currentTarget.id == 'shortTimer'){
+                    if(taskRoundFinished){
+                        startTime(ev,item);
+                    }                
+                }else{
+                    if(!taskRoundFinished){
+                        startTime(ev,item);
+                    }
                 }
-            }
+            });
         });
-    });
+        
+    }
 
     function startTime(ev,item){
 
@@ -205,7 +213,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
         let close = document.createElement('i');
         close.setAttribute('class','fa fa-trash');
-        close.style.color = ' #ff1414';
 
         close.addEventListener('click',function(ev){
 
@@ -244,6 +251,49 @@ document.addEventListener('DOMContentLoaded',function(){
 
         return singleTask;
     }    
+
+    let openSettings = document.getElementById('setting');
+
+    openSettings.addEventListener('click',settings);
+
+    function settings(){
+        let normalTimer = document.getElementById('normalTimer');
+        let shortTimer = document.getElementById('shortTimer');
+        let longTimer = document.getElementById('longTimer');
+
+        document.getElementById('taskTime').value = normalTimer.getAttribute('data-time');
+        document.getElementById('shortTime').value = shortTimer.getAttribute('data-time');
+        document.getElementById('longTime').value = longTimer.getAttribute('data-time');
+    }
+
+    let saveTime = document.querySelector('#saveTime');
+
+    saveTime.addEventListener('click',getTimeValues);
+
+    function getTimeValues(){
+
+        let taskTime = document.getElementById('taskTime').value;
+        let shortTime = document.getElementById('shortTime').value;
+        let longTime = document.getElementById('longTime').value;
+
+        setTimeValues(taskTime,shortTime,longTime);
+        getInitialTimers(pomodoroTimers);
+    }
+
+    function setTimeValues(taskTime,shortTime,longTime){
+
+        let normalTimer = document.getElementById('normalTimer');
+        let shortTimer = document.getElementById('shortTimer');
+        let longTimer = document.getElementById('longTimer');
+
+        if(taskTime == '' || shortTime == '' || longTime == ''){
+            return alert('Los tiempos deben estar informados');
+        }
+
+        normalTimer.setAttribute('data-time', taskTime);
+        shortTimer.setAttribute('data-time', shortTime);
+        longTimer.setAttribute('data-time', longTime);
+    }
 
 });
 

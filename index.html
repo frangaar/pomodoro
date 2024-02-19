@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="--ratio: 0.99">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +11,7 @@
     <title>Pomodoro</title>
 </head>
 <body>
-
-    <!-- <svg class="round" height="400" width="400" style="overflow: visible; position: relative" data-percent="89">
-        <circle cx="200" cy="200" r="200" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute;"></circle>
-        <circle cx="200" cy="200" r="200" fill="transparent" stroke="blue" stroke-width="4px" style="position: absolute; stroke-dasharray: calc(2*3.14*200); stroke-dashoffset: calc(-2*3.14*200*var(--ratio)); transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
-    </svg> -->
-
-        <!-- <svg width="400" height="400" style="overflow: visible; position: relative">
-            <circle cx="200" cy="200" r="100" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
-            <circle class="round" cx="200" cy="200" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
-        </svg> -->
+    <i class="fa fa-gear" id="setting" data-bs-toggle="modal" data-bs-target="#settings"></i>
 
     <div class="container-fluid">
         <div class="container">
@@ -29,10 +20,10 @@
                     <div class="container-fluid">
                         <div class="container">
                             <div class="row pomodoro">
-                                <div class="col border" id="normalTimer" data-time="00">
+                                <div class="col border" id="normalTimer" data-time="25">
                                     <span class="title">Temporizador</span>
                                     <div class="timer">
-                                        <span class="align-middle"></span>
+                                        <span class="align-middle">00:00</span>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +33,7 @@
                                 <div class="col border"  id="shortTimer" data-time="05">
                                     <span class="title">Descanso corto</span>
                                     <div class="timer">
-                                        <span class="align-middle"></span>
+                                        <span class="align-middle">00:00</span>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +43,7 @@
                                 <div class="col border" id="longTimer" data-time="15">
                                     <span class="title">Descanso largo</span>
                                     <div class="timer">
-                                        <span class="align-middle"></span>
+                                        <span class="align-middle">00:00</span>
                                     </div>
                                 </div>
                             </div>
@@ -128,6 +119,45 @@
           <h1>¡Tiempo Finalizado!</h1>
         </div>
       </div>
+
+    <div class="modal fade" id="settings" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="settingsLabel">Time settings</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container text-center">
+                    <div class="row align-items-start">
+                      <div class="col">
+                        <div class="mb-3">
+                            <label for="taskTime" class="form-label">Task time</label>
+                            <input type="number" class="form-control" id="taskTime">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3">
+                            <label for="shortTime" class="form-label">Short time</label>
+                            <input type="number" class="form-control" id="shortTime">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3">
+                            <label for="longTime" class="form-label">Long time</label>
+                            <input type="number" class="form-control" id="longTime">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveTime">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
