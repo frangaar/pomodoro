@@ -22,12 +22,12 @@
                         <div class="container">
                             <div class="row pomodoro">
                                 <div class="col border" id="normalTimer" data-time="25">
-                                    <span class="title">Temporizador</span>
+                                    <span class="title">Trabajo</span>
                                     <div class="timer">
-                                        <!-- <svg>
-                                            <circle cx="75" cy="75" r="100" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
-                                            <circle class="round" cx="75" cy="75" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
-                                        </svg> -->
+                                        <svg width="210" height="200">
+                                            <circle cx="100" cy="100" r="100" fill="transparent" stroke="gray" stroke-width="8px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+                                            <circle class="round" cx="100" cy="100" r="100" stroke-width="8px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+                                        </svg>
                                         <span class="align-middle">00:00</span>
                                     </div>
                                 </div>
@@ -38,6 +38,10 @@
                                 <div class="col border"  id="shortTimer" data-time="05">
                                     <span class="title">Descanso corto</span>
                                     <div class="timer">
+                                        <svg width="210" height="200">
+                                            <circle cx="100" cy="100" r="100" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+                                            <circle class="round" cx="100" cy="100" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+                                        </svg>
                                         <span class="align-middle">00:00</span>
                                     </div>
                                 </div>
@@ -48,6 +52,10 @@
                                 <div class="col border" id="longTimer" data-time="15">
                                     <span class="title">Descanso largo</span>
                                     <div class="timer">
+                                        <svg width="210" height="200">
+                                            <circle cx="100" cy="100" r="100" fill="transparent" stroke="gray" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+                                            <circle class="round" cx="100" cy="100" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
+                                        </svg>
                                         <span class="align-middle">00:00</span>
                                     </div>
                                 </div>
@@ -60,7 +68,7 @@
                         <div class="container">
                             <div class="row align-items-start tablero">
                             <div class="col border" id="pendiente" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                <span class="title">Pendents</span>
+                                <span class="title">Pedientes</span>
                                 <div class="tasksList border"></div>
                                 <button type="button" class="btn btn-primary addTask" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <span class="simbolo"></span>
@@ -68,11 +76,11 @@
                                 </button>
                             </div>
                             <div class="col border" id="curso" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                <span class="title">En curs</span>
+                                <span class="title">En curso</span>
                                 <div class="tasksList border"></div>
                             </div>
                             <div class="col border" id="completado" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                <span class="title">Completades</span>
+                                <span class="title">Completados</span>
                                 <div class="tasksList border"></div>
                             </div>
                             </div>
@@ -88,21 +96,21 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">New Task</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva tarea</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Title:</label>
+                <label for="recipient-name" class="col-form-label">Título:</label>
                 <input type="text" class="form-control" id="title">
               </div>
               <div class="mb-3">
-                <label for="message-text" class="col-form-label">Description:</label>
+                <label for="message-text" class="col-form-label">Descripción:</label>
                 <textarea class="form-control" id="text"></textarea>
               </div>
               <div class="mb-3 category">
-                <label for="message-text" class="col-form-label w-100">Category:</label>
+                <label for="message-text" class="col-form-label w-100">Categoria:</label>
                 <span class="badge text-bg-primary" data-color="text-bg-primary" data-name="Front-End">Front-End</span>
                 <span class="badge text-bg-success" data-color="text-bg-success" data-name="Back-End">Back-End</span>
                 <span class="badge text-bg-warning" data-color="text-bg-warning" data-name="Design">Design</span>
@@ -110,8 +118,8 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" id="save" data-bs-dismiss="modal">Save</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" id="save" data-bs-dismiss="modal">Crear</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>
@@ -129,7 +137,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="settingsLabel">Time settings</h1>
+                <h1 class="modal-title fs-5" id="settingsLabel">Ajustes de tiempo</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -137,19 +145,19 @@
                     <div class="row align-items-start">
                       <div class="col">
                         <div class="mb-3">
-                            <label for="taskTime" class="form-label">Task time</label>
+                            <label for="taskTime" class="form-label">Trabajo</label>
                             <input type="number" class="form-control" id="taskTime">
                         </div>
                       </div>
                       <div class="col">
                         <div class="mb-3">
-                            <label for="shortTime" class="form-label">Short time</label>
+                            <label for="shortTime" class="form-label">Decanso corto</label>
                             <input type="number" class="form-control" id="shortTime">
                         </div>
                       </div>
                       <div class="col">
                         <div class="mb-3">
-                            <label for="longTime" class="form-label">Long time</label>
+                            <label for="longTime" class="form-label">Descanso largo</label>
                             <input type="number" class="form-control" id="longTime">
                         </div>
                       </div>

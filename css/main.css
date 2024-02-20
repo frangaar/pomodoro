@@ -1,5 +1,6 @@
 .container-fluid{
     background-color: white;
+    background-color: #0075B9;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -12,13 +13,14 @@
     padding-top: 10px;
     padding-left: 15px;
     margin-left: 15px;
-    background-color: #0075B9;
+    background-color: white;
 }
 
 .tablero .title{
     font-weight: 700;
     font-size: 25px;
     color: white;
+    color: black;
 }
 
 .tasksList{
@@ -114,20 +116,19 @@ div[id^='task'] i{
 }
 
 .pomodoro .timer{
-    padding-top: 10px;
+    padding-top: 5px;
     width: 210px;
     height: 190px;
     margin: auto;
     cursor: pointer;
-    /* background-image: url(../img/pomodoro.png);
-    background-size: 212px; */
+    position: relative;
 }
 
 .pomodoro .timer span{
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
-    height: 190px;
+    align-items: center; */
+    height: 750px;
     border: 1px solid transparent;
     border-radius: 50%;
     font-size: 50px;
@@ -135,6 +136,9 @@ div[id^='task'] i{
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
+    top: 75px;
+    position: absolute;
+    left: 30px;
 }
 
 #exampleModal{
@@ -180,6 +184,7 @@ div[id^='task'] i{
     font-size: 28px;
     font-weight: bold;
     text-align: right;
+    font-size: 45px;
   }
   
   .close:hover,
@@ -189,22 +194,24 @@ div[id^='task'] i{
     cursor: pointer;
   }
 
-  /* .round {
+  .round {
     transform: rotate(-90deg);
     transition: all 1s ease-in-out;
     fill: none;
     stroke: red;
-    stroke-width: 4;
-    stroke-linecap: round;
     stroke-dasharray: 0 999;
+  }
+
+  circle{
+    stroke-width: 8;
+    stroke-linecap: round;
   }
 
   svg{
     overflow: visible;
-    position: relative;
-    width: 200;
-    height: 200;
-  } */
+    position: absolute;
+    left: 0px;
+  }
 
   .fa-gear{
     position: absolute;
