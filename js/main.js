@@ -314,8 +314,12 @@ function drop(ev) {
         let task = document.getElementById(data)
         ev.target.appendChild(task);
 
-        if(ev.target.parentNode.id == 'completado') task.removeAttribute('draggable');
-        if(ev.target.parentNode.id == 'completado') task.removeAttribute('ondragstart');
+        if(ev.target.parentNode.id == 'completado'){
+            task.removeAttribute('draggable');
+            task.removeAttribute('ondragstart');
+            task.classList.add('completed');
+            task.querySelector('i').remove();
+        }
     }
 }
 

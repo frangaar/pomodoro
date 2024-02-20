@@ -218,3 +218,7 @@ div[id^='task'] i{
   .fa-trash{
     color: #ff1414;
   }
+
+  .completed{
+    opacity: 0.5;
+  }
