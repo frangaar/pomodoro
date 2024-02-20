@@ -1,5 +1,5 @@
 .container-fluid{
-    background-color: #007EC9;
+    background-color: white;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -12,7 +12,13 @@
     padding-top: 10px;
     padding-left: 15px;
     margin-left: 15px;
-    background-color: white;
+    background-color: #0075B9;
+}
+
+.tablero .title{
+    font-weight: 700;
+    font-size: 25px;
+    color: white;
 }
 
 .tasksList{
@@ -20,6 +26,7 @@
     margin-top: 25px;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: white ;
 }
 
 .addTask{
@@ -31,6 +38,11 @@
     background-color: white;
     color: black;
     border: none;
+}
+
+.addTask:hover{
+    background-color: white;
+    color: black;
 }
 
 .simbolo{
@@ -96,10 +108,15 @@ div[id^='task'] i{
     
 }
 
+.pomodoro .title{
+    font-size: 25px;
+    font-weight: 400;
+}
+
 .pomodoro .timer{
     padding-top: 10px;
     width: 210px;
-    height: 230px;
+    height: 190px;
     margin: auto;
     cursor: pointer;
     /* background-image: url(../img/pomodoro.png);
@@ -110,10 +127,14 @@ div[id^='task'] i{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 222px;
+    height: 190px;
     border: 1px solid transparent;
     border-radius: 50%;
     font-size: 50px;
+    font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
 
 #exampleModal{

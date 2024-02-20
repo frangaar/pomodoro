@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
     
     colsTasks.forEach((item)=>{
-        item.style.height = (window.innerHeight - 120) + 'px';
+        item.style.height = (window.innerHeight - 131) + 'px';
     });
 
     categories.forEach((item)=>{
