@@ -137,6 +137,25 @@ div[id^='task'] i{
     left: 30px;
 }
 
+.pomodoro .timer .badge{
+    font-size: 20px;
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    display: none;
+    animation: stopedBagde 1s;
+}
+
+@keyframes stopedBagde {
+    0%    { opacity: 0; }
+    100%  { opacity: 1; }
+  }
+  
+
+.showPaused{
+    display: block !important;
+}
+
 #exampleModal{
     z-index: 2000;
     -webkit-user-select: none;

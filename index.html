@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Pomodoro</title>
 </head>
 <body>
@@ -29,6 +30,7 @@
                                             <circle class="round" cx="100" cy="100" r="100" stroke-width="8px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
                                         </svg>
                                         <span class="align-middle">00:00</span>
+                                        <span class="badge text-bg-danger">PAUSADO</span>
                                     </div>
                                 </div>
                             </div>
@@ -43,6 +45,7 @@
                                             <circle class="round" cx="100" cy="100" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
                                         </svg>
                                         <span class="align-middle">00:00</span>
+                                        <span class="badge text-bg-danger">PAUSADO</span>
                                     </div>
                                 </div>
                             </div>
@@ -57,6 +60,7 @@
                                             <circle class="round" cx="100" cy="100" r="100" stroke-width="4px" style="position: absolute; transform: rotate(-90deg); transform-origin: center; transition: 1s"></circle>
                                         </svg>
                                         <span class="align-middle">00:00</span>
+                                        <span class="badge text-bg-danger">PAUSADO</span>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +169,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="saveTime">Save</button>
+                <button type="button" class="btn btn-primary" id="saveTime" data-bs-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
             </div>

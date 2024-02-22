@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded',function(){
     let categories = document.querySelectorAll('.category .badge');
     let pomodoroTimers = document.querySelectorAll('.pomodoro .col');
     
+    var intervalID = 0;
     var totalTime = 0;
     var roundDraw = 0;
     var taskRoundFinished = false;
     var shortRestingTimeCounter = 0;
     let taskData = new Array();
     let categColor = '';
+    const sec = '00';
     
     getInitialTimers(pomodoroTimers);
 
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
             let timeToSet = item.getAttribute('data-time').length;
 
-            item.querySelector('.timer span').innerHTML = timeToSet < 2 ? '0' + item.getAttribute('data-time') + ':' + '00' : item.getAttribute('data-time') + ':' + '00';
+            item.querySelector('.timer span').innerHTML = timeToSet < 2 ? '0' + item.getAttribute('data-time') + ':' + sec : item.getAttribute('data-time') + ':' + sec;
     
             item.addEventListener('click', function(ev){
     
@@ -47,22 +49,39 @@ document.addEventListener('DOMContentLoaded',function(){
 
         if(!item.classList.contains('running')){
 
+            if(!item.classList.contains('paused')){
+                roundDraw = 0;
+            }
+
+            item.querySelector('.round').style.strokeDasharray = roundDraw  + ' 999';
+            
+            item.classList.remove('paused');
+            item.querySelector('.timer .badge').classList.remove('showPaused');
             item.classList.add('running');
+            
             let min = ev.currentTarget.getAttribute('data-time');
             let sec = '00';
-            roundDraw = 0;
-            item.querySelector('.round').style.strokeDasharray = roundDraw  + ' 999';
+            
+            let dataTime = item.querySelector('.timer span').innerHTML;
+            
             totalTime = (parseInt(min)*60) + parseInt(sec); 
-            item.querySelector('.timer span').innerText = min + ':' + sec
-            let intervalID = setInterval(function(){
+            item.querySelector('.timer span').innerText = dataTime;
+
+            intervalID = setInterval(function(){
                 let time = item.querySelector('.timer span').innerText;
                 splitTime = time.split(':');
                 let min = parseInt(splitTime[0]);
                 let sec = parseInt(splitTime[1]);
                 increaseTimer(min,sec,item,intervalID);
             },1000);
+        }else{
+            item.classList.remove('running');
+            item.classList.add('paused');
+            item.querySelector('.timer .badge').classList.add('showPaused');
+            clearInterval(intervalID);
         }
     }
+
 
 
     function increaseTimer(min,sec,timer,intervalID){
@@ -72,6 +91,8 @@ document.addEventListener('DOMContentLoaded',function(){
             min = '00';
             sec = '00';
             timer.classList.remove('running');
+            timer.classList.remove('paused');
+            timer.querySelector('.timer .badge').classList.add('showPaused');
             if(timer.getAttribute('id') == 'normalTimer'){
                 taskRoundFinished = true;
             }else if(timer.getAttribute('id') == 'shortTimer'){
@@ -113,7 +134,6 @@ document.addEventListener('DOMContentLoaded',function(){
         roundDraw = roundPercent * roundCircum / 100
         round.style.strokeDasharray = roundDraw  + ' 999';
 
-        
     }
 
     cols.forEach((item)=>{
@@ -204,7 +224,20 @@ document.addEventListener('DOMContentLoaded',function(){
 
         close.addEventListener('click',function(ev){
 
-            ev.currentTarget.parentNode.parentNode.remove();
+            Swal.fire({
+                title: "Estas seguro de que quieres eliminar la tarea?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Si",
+                denyButtonText: `No`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log(ev.target.parentNode.parentNode.remove());
+                    Swal.fire("Tarea eliminada correctamente!", "", "success");
+                }
+            });
+
+            
         });
 
         let body = document.createElement('div');
@@ -306,7 +339,6 @@ function drop(ev) {
             task.removeAttribute('draggable');
             task.removeAttribute('ondragstart');
             task.classList.add('completed');
-            task.querySelector('i').remove();
         }
     }
 }
